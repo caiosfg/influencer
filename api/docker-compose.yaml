@@ -1,23 +1,37 @@
 services:
   backend:
-    container_name: admin_api
     platform: linux/x86_64
     build:
       context: .
       dockerfile: Dockerfile
+    restart: unless-stopped
     environment:
       DB_HOST: db
       DB_DATABASE: admin
       DB_USERNAME: root
       DB_PASSWORD: root
-    ports:
-      - 8080:8080
+    expose:
+      - "9000"
     volumes:
-      - .:/app
+      - ./:/var/www/html/
     depends_on:
       - db
     networks:
       - app
+
+  nginx:
+    build:
+      context: .
+      dockerfile: docker/nginx/Dockerfile
+    ports:
+      - "8000:80"
+    volumes:
+        - ./:/var/www/html/
+    depends_on:
+      - backend
+    networks:
+        - app
+
   db:
     container_name: admin_db
     platform: linux/x86_64
@@ -30,7 +44,7 @@ services:
     volumes:
       - .dbdata:/var/lib/mysql
     ports:
-    - 33866:3386
+    - "3306:3306"
     networks:
       - app
 networks:
