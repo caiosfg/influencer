@@ -1,0 +1,1 @@
+{"version":1,"defects":{"PrimeFactorsTest::testGeneratesPrimeFactorsFor2":7},"times":{"PrimeFactorsTest::testCanBeCreatedFromValidEmail":0.005,"PrimeFactorsTest::testGeneratesPrimeFactorsFor1":0.005,"PrimeFactorsTest::testGeneratesPrimeFactorsFor2":0}}
