@@ -5,9 +5,19 @@ namespace App;
 class PrimeFactors {
     public function generate ($number) {
 
-        if($number > 1) {
-            return [$number];
+        $factors = [];
+
+
+        while($number % 2 === 0){
+            $factors[] = 2;
+            
+            $number = $number / 2;
         }
-        return [];
+
+        if($number > 1) {
+            $factors[] = $number;
+        }
+
+        return $factors;
     }
 }

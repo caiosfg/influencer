@@ -18,4 +18,11 @@ class PrimeFactorsTest extends TestCase {
 
         $this->assertEquals([2], $factors->generate(2));
     }
+
+    /** @test */
+    public function testGeneratesPrimeFactorsFor4() {
+        $factors = new PrimeFactors();
+
+        $this->assertEquals([2, 2], $factors->generate(4));
+    }
 }
