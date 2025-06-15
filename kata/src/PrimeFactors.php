@@ -6,16 +6,17 @@ class PrimeFactors {
     public function generate ($number) {
 
         $factors = [];
+        $divisor = 2;
 
 
-        while($number % 2 === 0){
-            $factors[] = 2;
-            
-            $number = $number / 2;
-        }
+        while($number > 1){
+            while($number % $divisor === 0){
+                $factors[] = $divisor;
+                
+                $number = $number / $divisor;
+            }
 
-        if($number > 1) {
-            $factors[] = $number;
+            $divisor ++;
         }
 
         return $factors;
